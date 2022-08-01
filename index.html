@@ -7,6 +7,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="/styles/main.css">
         <link rel="stylesheet" href="https://use.typekit.net/lvo2ynr.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
         <script src="index.js"></script>
     </head>
     <body>
@@ -23,21 +24,51 @@
             <!--General Search-->
             <div class="search_general row">
                 <div class="column-12 d-flex align-items-center position-relative">
-                    <input id="general_search" type="text" placeholder="Rechercher une recette" class="w-100 p-4 border-0 bg-light rounded-2 fs-1 pe">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-search position-absolute end-30 " viewBox="0 0 16 16">
-                        <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
-                    </svg>
+                    <input id="search_general_input" type="text" placeholder="Rechercher une recette" class="w-100 p-4 border-0 bg-light rounded-2 fs-1 fw-normal pe">
+                    <i class="search_general_icon bi bi-search position-absolute end-30"></i>
                 </div>
             </div>
             
             <!--Search Tags-->
-            <div class="search_tags row">
-
+            <div class="row mt-4">
+                <ul class="search_tags d-flex flex-row">
+                    <li class="d-flex flex-row justify-content-between align-items-center py-1 px-3 w-auto bg-primary text-white rounded-2 fs-2 me-3">
+                        <span class="search_tags_title pe-3">Coco</span>
+                        <i class="bi bi-x-circle fs-1"></i>
+                    </li>
+                    <li class="d-flex flex-row justify-content-between align-items-center py-1 px-3 w-auto bg-primary text-white rounded-2 fs-2 me-3">
+                        <span class="search_tags_title pe-3">Cinnamon</span>
+                        <i class="bi bi-x-circle fs-1"></i>
+                    </li>
+                    <li class="d-flex flex-row justify-content-between align-items-center py-1 px-3 w-auto bg-success text-white rounded-2 fs-2 me-3">
+                        <span class="search_tags_title pe-3">Oven</span>
+                        <i class="bi bi-x-circle fs-1"></i>
+                    </li>
+                    <li class="d-flex flex-row justify-content-between align-items-center py-1 px-3 w-auto bg-primary text-white rounded-2 fs-2 me-3">
+                        <span class="search_tags_title pe-3">Ginger</span>
+                        <i class="bi bi-x-circle fs-1"></i>
+                    </li>
+                    <li class="d-flex flex-row justify-content-between align-items-center py-1 px-3 w-auto bg-danger text-white rounded-2 fs-2 me-3">
+                        <span class="search_tags_title pe-3">Planche</span>
+                        <i class="bi bi-x-circle fs-1"></i>
+                    </li>
+                </ul>
             </div>
             
             <!--Specific Search-->
-            <div class="search_specific row">
-
+            <div class="row-cols-3 d-flex flex-row g-3 mt-3">
+                <div class="col d-flex flex-row justify-content-between align-items-center py-4 px-3 bg-primary text-white rounded-2 fs-1">
+                    <span class="pe-4">Ingredients</span>
+                    <i class="bi bi-chevron-down fw-bold"></i>
+                </div>
+                <div class="col d-flex flex-row justify-content-between align-items-center py-4 px-3 bg-primary text-white rounded-2 fs-1">
+                    <span class="pe-4">Ingredients</span>
+                    <i class="bi bi-chevron-down fw-bold"></i>
+                </div>
+                <div class="col d-flex flex-row justify-content-between align-items-center py-4 px-3 bg-primary text-white rounded-2 fs-1">
+                    <span class="pe-4">Ingredients</span>
+                    <i class="bi bi-chevron-down fw-bold"></i>
+                </div>
             </div>
 
         </div>

@@ -1,8 +1,12 @@
-#general_search{
+#search_general_input{
     &::placeholder{
         color: black;
         opacity: 0.25;
     }
+}
+
+.search_general_icon{
+    font-size: 30px;
 }
 
 

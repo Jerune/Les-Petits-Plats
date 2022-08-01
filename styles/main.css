@@ -6,14 +6,14 @@
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  */
 :root {
-  --bs-blue: #3282F7;
+  --bs-blue: #0d6efd;
   --bs-indigo: #6610f2;
   --bs-purple: #6f42c1;
   --bs-pink: #d63384;
-  --bs-red: #ED6454;
+  --bs-red: #dc3545;
   --bs-orange: #fd7e14;
   --bs-yellow: #ffc107;
-  --bs-green: #68D9A4;
+  --bs-green: #198754;
   --bs-teal: #20c997;
   --bs-cyan: #0dcaf0;
   --bs-black: #000;
@@ -10939,21 +10939,24 @@ h1, .h1, h2, .h2, h3, .h3 {
 
 ul {
   list-style: none;
-  padding: 0;
   margin: 0;
 }
 
-#general_search::-moz-placeholder {
+#search_general_input::-moz-placeholder {
   color: black;
   opacity: 0.25;
 }
 
-#general_search:-ms-input-placeholder {
+#search_general_input:-ms-input-placeholder {
   color: black;
   opacity: 0.25;
 }
 
-#general_search::placeholder {
+#search_general_input::placeholder {
   color: black;
   opacity: 0.25;
+}
+
+.search_general_icon {
+  font-size: 30px;
 }/*# sourceMappingURL=main.css.map */
