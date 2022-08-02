@@ -3,7 +3,7 @@ function showRecipeCards (recipesData) {
   recipesData.forEach(recipe => {
     let recipeIngredients = ''
     recipe.ingredients.forEach(ingredient => {
-      recipeIngredients += `<li><strong>${ingredient.ingredient}</strong>:&nbsp;${ingredient.quantity}${ingredient.unit}</li>`
+      recipeIngredients += `<li><strong>${ingredient.ingredient}</strong>${ingredient.quantity ? ` : ${ingredient.quantity} ` : ''}${ingredient.unit ? ingredient.unit : ''}</li>`
     })
 
     recipeCards += `
