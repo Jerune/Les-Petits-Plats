@@ -23,6 +23,10 @@ input:focus{
     outline: none;
 }
 
+input::placeholder{
+    color: inherit;
+}
+
 h1, h2, h3{
     margin: 0;
     font-weight: 400;
@@ -31,8 +35,4 @@ h1, h2, h3{
 ul{
     list-style: none;
     margin: 0;
-}
-
-.zindex{
-    z-index: 2000;
 }

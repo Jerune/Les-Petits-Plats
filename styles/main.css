@@ -10939,6 +10939,18 @@ input:focus {
   outline: none;
 }
 
+input::-moz-placeholder {
+  color: inherit;
+}
+
+input:-ms-input-placeholder {
+  color: inherit;
+}
+
+input::placeholder {
+  color: inherit;
+}
+
 h1, .h1, h2, .h2, h3, .h3 {
   margin: 0;
   font-weight: 400;
@@ -10949,42 +10961,22 @@ ul {
   margin: 0;
 }
 
-.zindex {
-  z-index: 2000;
-}
-
 #search_general_input::-moz-placeholder {
-  color: black;
   opacity: 0.25;
 }
 
 #search_general_input:-ms-input-placeholder {
-  color: black;
   opacity: 0.25;
 }
 
 #search_general_input::placeholder {
-  color: black;
   opacity: 0.25;
 }
 
-.option_select::-moz-placeholder {
-  color: white;
-}
-
-.option_select:-ms-input-placeholder {
-  color: white;
-}
-
-.option_select,
-.option_select::placeholder {
-  color: white;
-}
-
 .search_general_icon {
-  font-size: 30px;
+  font-size: 25px;
 }
 
 .options_list {
-  z-index: 1000;
+  max-height: 340px;
 }/*# sourceMappingURL=main.css.map */

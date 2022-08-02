@@ -1,19 +1,13 @@
 #search_general_input::placeholder{
-        color: black;
         opacity: 0.25;
 }
 
-.option_select,
-.option_select::placeholder{
-    color: white;
-}
-
 .search_general_icon{
-    font-size: 30px;
+    font-size: 25px;
 }
 
 .options_list{
-    z-index: 1000;
+    max-height: 340px;
 }
 
 
