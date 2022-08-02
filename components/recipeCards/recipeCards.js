@@ -8,7 +8,7 @@ function showRecipeCards (recipesData) {
 
     recipeCards += `
         <div class="col-4">
-            <div class="card border-0">
+            <div class="card border-0 h-100">
                 <div class="card-img-top bg-dark" style="height: 178px ;"></div>
                 <div class="card-body bg-light">
                     <div class="card-title d-flex flex-row justify-content-between">
