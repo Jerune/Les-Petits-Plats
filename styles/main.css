@@ -10932,6 +10932,13 @@ a {
   color: white;
 }
 
+input,
+input:active,
+input:focus {
+  border: 0 !important;
+  outline: none;
+}
+
 h1, .h1, h2, .h2, h3, .h3 {
   margin: 0;
   font-weight: 400;
@@ -10940,6 +10947,10 @@ h1, .h1, h2, .h2, h3, .h3 {
 ul {
   list-style: none;
   margin: 0;
+}
+
+.zindex {
+  z-index: 2000;
 }
 
 #search_general_input::-moz-placeholder {
@@ -10957,6 +10968,23 @@ ul {
   opacity: 0.25;
 }
 
+.option_select::-moz-placeholder {
+  color: white;
+}
+
+.option_select:-ms-input-placeholder {
+  color: white;
+}
+
+.option_select,
+.option_select::placeholder {
+  color: white;
+}
+
 .search_general_icon {
   font-size: 30px;
+}
+
+.options_list {
+  z-index: 1000;
 }/*# sourceMappingURL=main.css.map */

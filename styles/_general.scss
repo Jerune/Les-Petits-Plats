@@ -16,6 +16,13 @@ a{
     color: white;
 }
 
+input,
+input:active,
+input:focus{
+    border: 0 !important;
+    outline: none;
+}
+
 h1, h2, h3{
     margin: 0;
     font-weight: 400;
@@ -24,4 +31,8 @@ h1, h2, h3{
 ul{
     list-style: none;
     margin: 0;
+}
+
+.zindex{
+    z-index: 2000;
 }
