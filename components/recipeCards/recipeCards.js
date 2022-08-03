@@ -1,3 +1,7 @@
+// @ts-nocheck
+// DOM
+const recipeCardsElement = document.querySelector('.recipes')
+
 function showRecipeCards (recipesData) {
   let recipeCards = ''
   recipesData.forEach(recipe => {
@@ -27,7 +31,7 @@ function showRecipeCards (recipesData) {
         `
   })
 
-  return recipeCards
+  recipeCardsElement.innerHTML = recipeCards
 }
 
 export { showRecipeCards }
