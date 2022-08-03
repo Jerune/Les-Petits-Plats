@@ -1,3 +1,4 @@
+// @ts-nocheck
 // Imports
 import { recipes } from '../../data/recipes.js'
 import { init } from '../../index.js'
@@ -6,9 +7,9 @@ import { init } from '../../index.js'
 const recipeCards = document.querySelector('.recipes')
 
 function handleSearch () {
-  const searchGeneralInput = document.getElementById('search_general_input')
-  if (searchGeneralInput.value.length > 2) {
-    const filteredRecipes = recipes.filter((recipe) => recipe.name.toLowerCase().includes(searchGeneralInput.value) || recipe.description.includes(searchGeneralInput.value))
+  const searchGeneralInput = document.getElementById('search_general_input').value.toLowerCase()
+  if (searchGeneralInput.length > 2) {
+    const filteredRecipes = recipes.filter((recipe) => recipe.name.toLowerCase().includes(searchGeneralInput) || recipe.description.includes(searchGeneralInput) || recipe.ingredients.some((ingredient) => ingredient.ingredient.toLowerCase().includes(searchGeneralInput)))
     if (filteredRecipes.length > 0) {
       init(filteredRecipes)
     } else {
