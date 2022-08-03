@@ -162,7 +162,7 @@ export const recipes = [
         quantity: 2
       },
       {
-        ingredient: 'Crème fraiche',
+        ingredient: 'Crème fraîche',
         quantity: 2,
         unit: 'cuillères à soupe'
       },
@@ -178,7 +178,7 @@ export const recipes = [
       }
     ],
     time: 45,
-    description: 'Etaler la pâte feuilleté aux dimensions du moule, étaler la moutarde sur la pâte feuilleté, ajouter le thon. Découper les tomates en rondelles et les poser sur le poisson, ajouter un peu de crème fraiche sur toute la tarte et recouvrez de gruyère râpé. Cuire au four 30 minutes',
+    description: 'Etaler la pâte feuilleté aux dimensions du moule, étaler la moutarde sur la pâte feuilleté, ajouter le thon. Découper les tomates en rondelles et les poser sur le poisson, ajouter un peu de crème fraîche sur toute la tarte et recouvrez de gruyère râpé. Cuire au four 30 minutes',
     appliance: 'Four',
     ustensils: ['moule à tarte', 'râpe à fromage', 'couteau']
   },
@@ -200,7 +200,7 @@ export const recipes = [
         quantity: '2'
       },
       {
-        ingredient: 'Crème fraiche',
+        ingredient: 'Crème fraîche',
         quantity: 25,
         unit: 'cl'
       },
@@ -217,7 +217,7 @@ export const recipes = [
       }
     ],
     time: 50,
-    description: "Commencez par mélanger les oeufs le sucre et le sucre vanillé dans un saladier, découper les pommes en tranches, ajouter la crème fraiche aux oeufs. Une fois que tout est pret, étalez la tarte dans le moule. N'oubliez pas de piquer le fond avec une fourchette avant depositionner les pommes sur la tarte. Finallement verser la préparation à base d'oeufs et de crême fraiche. Laisser cuire au four pendant 30 minutes",
+    description: "Commencez par mélanger les oeufs le sucre et le sucre vanillé dans un saladier, découper les pommes en tranches, ajouter la crème fraîche aux oeufs. Une fois que tout est pret, étalez la tarte dans le moule. N'oubliez pas de piquer le fond avec une fourchette avant depositionner les pommes sur la tarte. Finallement verser la préparation à base d'oeufs et de crême fraiche. Laisser cuire au four pendant 30 minutes",
     appliance: 'Four',
     ustensils: ['moule à tarte', 'saladier', 'fourchette']
   }, {
@@ -322,7 +322,7 @@ export const recipes = [
       }
     ],
     time: 15,
-    description: "Peler le concombre le couper 2, retirer les pépins. Couper les olives en morceaux, ainsi que le fromage de chèvre. Ajouter le basilic ainsi que le vinaigre balsamic et l'huile d'olives à votre gout.",
+    description: "Peler le concombre le couper 2, retirer les pépins. Couper les olives en morceaux, ainsi que le fromage de chèvre. Ajouter le basilic ainsi que le vinaigre balsamic et l'huile d'olive à votre gout.",
     appliance: 'Saladier',
     ustensils: ['cuillère en bois', 'couteau']
   },
@@ -569,7 +569,7 @@ export const recipes = [
         unit: 'tiges'
       },
       {
-        ingredient: "huile d'olives",
+        ingredient: "huile d'olive",
         quantity: 2,
         unit: 'cuillère à soupe'
       }
@@ -685,7 +685,7 @@ export const recipes = [
         unit: 'grammes'
       },
       {
-        ingredient: 'Crème fraiche',
+        ingredient: 'Crème fraîche',
         quantity: 200,
         unit: 'grammes'
       },
@@ -735,13 +735,13 @@ export const recipes = [
         unit: 'cl'
       },
       {
-        ingredient: 'Crème Fraiche',
+        ingredient: 'Crème fraîche',
         quantity: 1,
         unit: 'cuillères à soupe'
       }
     ],
     time: 30,
-    description: 'Cuisiner la viande hachée dans une poelle à frire. Dans une autre faire cuire les oignons découpés en fins dés avec un peu de beurre. Ajouter du vin rouge. Mélanger les oigons avec la viande hachée. Faire cuire les pates le temps indiqué sur le paquet. Ajouter le coulis de tomates à la viande hachée. Une fois que les pates sont cuites, ajouter la crème fraiche à la viande hachée. Serivir.',
+    description: 'Cuisiner la viande hachée dans une poelle à frire. Dans une autre faire cuire les oignons découpés en fins dés avec un peu de beurre. Ajouter du vin rouge. Mélanger les oigons avec la viande hachée. Faire cuire les pates le temps indiqué sur le paquet. Ajouter le coulis de tomates à la viande hachée. Une fois que les pates sont cuites, ajouter la crème fraîche à la viande hachée. Serivir.',
     appliance: 'Casserolle.',
     ustensils: ['Cuillère en bois', 'louche', 'couteau']
   },
@@ -908,7 +908,7 @@ export const recipes = [
         quantity: 1
       },
       {
-        ingredient: "Huile d'olives"
+        ingredient: "Huile d'olive"
       },
       {
         ingredient: 'Oignon',
@@ -1281,7 +1281,7 @@ export const recipes = [
         unit: 'grammes'
       },
       {
-        ingredient: "Huile d'olives",
+        ingredient: "Huile d'olive",
         quantity: 25,
         unit: 'cl'
       },
@@ -1616,7 +1616,7 @@ export const recipes = [
       }
     ],
     time: 5,
-    description: 'Mélanger le jus de citron avec le sucre et la mascarpone. Ajouter la crème fraiche. Mélanger le tout et mettre au congélateur pendant 1 heure. Servir',
+    description: 'Mélanger le jus de citron avec le sucre et la mascarpone. Ajouter la Crème fraîche. Mélanger le tout et mettre au congélateur pendant 1 heure. Servir',
     appliance: 'Saladier',
     ustensils: ['fouet', 'verres', 'cuillère en bois']
   },
