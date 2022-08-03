@@ -24,23 +24,40 @@ function setAdvancedSearchOptions (recipesArray) {
       }
     })
   })
-  console.log(advancedSearchOptions)
+  updateAdvancedSearchOptions(advancedSearchOptions)
 }
 
-function showAdvancedSearchOptions () {
+function updateAdvancedSearchOptions (advancedSearchOptions) {
   const types = ['ingredients', 'machines', 'utensils']
   types.forEach((type) => {
-    const list = document.getElementsByClassName(type).item(0)
+    const list = document.getElementsByClassName(type).item(1)
     let listItems = ''
     advancedSearchOptions[type].forEach((element) => {
       listItems += `<li class="p-0 me-2">${element.charAt(0).toUpperCase() + element.slice(1)}</li>`
     })
     if (listItems.length > 0) {
       list.innerHTML = listItems
-      list.classList.remove('d-none')
-      list.classList.add('d-flex')
     }
   })
+}
+
+function toggleAdvancedSearchOptions (type) {
+  const icon = document.getElementsByClassName(type).item(0)
+  const iconState = icon.getAttribute('data-state')
+  const list = document.getElementsByClassName(type).item(1)
+  if (iconState === 'show') {
+    icon.classList.remove('.bi-chevron-down')
+    icon.classList.add('.bi-chevron-up')
+    icon.setAttribute('state', 'hide')
+    list.classList.remove('d-none')
+    list.classList.add('d-flex')
+  } else if (iconState === 'hide') {
+    icon.classList.remove('.bi-chevron-up')
+    icon.classList.add('.bi-chevron-down')
+    icon.setAttribute('state', 'show')
+    list.classList.remove('d-none')
+    list.classList.add('d-flex')
+  }
 }
 
 function filterAdvancedSearchOptions (type) {
@@ -51,8 +68,8 @@ function filterAdvancedSearchOptions (type) {
       [type]: advancedSearchOptions[type].filter((item) => item.includes(inputFieldValue))
     }
     advancedSearchOptions = filteredSearchOptions
-    showAdvancedSearchOptions()
+    updateAdvancedSearchOptions(filteredSearchOptions)
   }
 }
 
-export { setAdvancedSearchOptions, showAdvancedSearchOptions, filterAdvancedSearchOptions }
+export { setAdvancedSearchOptions, toggleAdvancedSearchOptions, filterAdvancedSearchOptions }

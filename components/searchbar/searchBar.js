@@ -2,7 +2,7 @@
 // Imports
 import { recipes } from '../../data/recipes.js'
 import { showRecipeCards } from '../recipeCards/recipeCards.js'
-import { setAdvancedSearchOptions, showAdvancedSearchOptions } from '../advancedSearch/advancedSearch.js'
+import { setAdvancedSearchOptions } from '../advancedSearch/advancedSearch.js'
 
 // DOM
 const recipeCards = document.querySelector('.recipes')
@@ -15,7 +15,6 @@ function handleGeneralSearch (recipesArray) {
     if (filteredRecipes.length > 0) {
       showRecipeCards(filteredRecipes)
       setAdvancedSearchOptions(filteredRecipes)
-      showAdvancedSearchOptions()
     } else {
       recipeCards.innerHTML = `
             <div class="col-12 d-flex flex-column align-items-center py-5">
