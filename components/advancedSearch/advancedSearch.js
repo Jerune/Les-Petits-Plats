@@ -1,16 +1,16 @@
 // @ts-nocheck
-// DOM
-const ingredientsList = document.getElementById('ingredients_list')
 
-function showAdvancedSearchOptions (advancedSearchOptions) {
+function showAdvancedSearchOptions (advancedSearchOptions, type) {
+  const list = document.getElementById(type)
   let listItems = ''
-  advancedSearchOptions.ingredients.forEach((ingredient) => {
-    listItems += `<li class="p-0 me-2">${ingredient.charAt(0).toUpperCase() + ingredient.slice(1)}</li>`
+  advancedSearchOptions[type].forEach((element) => {
+    listItems += `<li class="p-0 me-2">${element.charAt(0).toUpperCase() + element.slice(1)}</li>`
   })
   if (listItems.length > 0) {
-    ingredientsList.innerHTML = listItems
-    ingredientsList.classList.remove('d-none')
-    ingredientsList.classList.add('d-flex')
+    list.innerHTML = listItems
+    list.classList.remove('d-none')
+    list.classList.add('d-flex')
+    console.log(document.getElementById(type))
   }
 }
 

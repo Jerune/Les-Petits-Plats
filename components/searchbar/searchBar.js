@@ -53,7 +53,9 @@ function updateAdvancedSearchOptions (recipesArray) {
       }
     })
   })
-  showAdvancedSearchOptions(advancedSearchOptions)
+  showAdvancedSearchOptions(advancedSearchOptions, 'ingredients')
+  showAdvancedSearchOptions(advancedSearchOptions, 'machines')
+  showAdvancedSearchOptions(advancedSearchOptions, 'utensils')
 }
 
 export { handleGeneralSearch, updateAdvancedSearchOptions, filteredRecipes, advancedSearchOptions }
