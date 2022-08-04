@@ -1,9 +1,11 @@
 // @ts-nocheck
 // Variables
+let activeRecipes = []
 let advancedSearchOptions = {}
 
 // Set available advanced search options based on current recipes
 function setAdvancedSearchOptions (recipesArray) {
+  activeRecipes = recipesArray
   advancedSearchOptions = {
     ingredients: [],
     machines: [],
@@ -77,6 +79,8 @@ function filterAdvancedSearchOptions (type) {
     }
     advancedSearchOptions = filteredSearchOptions
     updateAdvancedSearchOptions(filteredSearchOptions)
+  } else {
+    setAdvancedSearchOptions(activeRecipes)
   }
 }
 

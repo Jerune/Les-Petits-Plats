@@ -23,13 +23,10 @@ ingredientsInput.addEventListener('input', () => filterAdvancedSearchOptions('in
 machinesInput.addEventListener('input', () => filterAdvancedSearchOptions('machines'))
 utensilsInput.addEventListener('input', () => filterAdvancedSearchOptions('utensils'))
 
-// Advanced Search blur / focus event to toggle list on/off
+// Advanced Search input blur event to toggle list on/off
 ingredientsInput.addEventListener('blur', () => toggleAdvancedSearchOptions('ingredients'))
 machinesInput.addEventListener('blur', () => toggleAdvancedSearchOptions('machines'))
 utensilsInput.addEventListener('blur', () => toggleAdvancedSearchOptions('utensils'))
-ingredientsInput.addEventListener('focus', () => toggleAdvancedSearchOptions('ingredients'))
-machinesInput.addEventListener('focus', () => toggleAdvancedSearchOptions('machines'))
-utensilsInput.addEventListener('focus', () => toggleAdvancedSearchOptions('utensils'))
 
 // Toggle icons click events to manually open / close Advanced Search Options list
 ingredientsIcon.addEventListener('click', () => toggleAdvancedSearchOptions('ingredients'))
