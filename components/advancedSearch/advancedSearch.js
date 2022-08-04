@@ -26,10 +26,10 @@ function setAdvancedSearchOptions (recipesArray) {
       }
     })
   })
-  updateAdvancedSearchOptions(advancedSearchOptions)
+  showAdvancedSearchOptions(advancedSearchOptions)
 }
 
-function updateAdvancedSearchOptions (advancedSearchOptions) {
+function showAdvancedSearchOptions (advancedSearchOptions) {
   const types = ['ingredients', 'machines', 'utensils']
   types.forEach((type) => {
     const list = document.getElementsByClassName(type).item(1)
@@ -72,15 +72,23 @@ function toggleAdvancedSearchOptions (type) {
 
 function filterAdvancedSearchOptions (type) {
   const inputFieldValue = document.getElementById(type).value.toLowerCase()
-  if (inputFieldValue.length > 2) {
+  const list = document.getElementsByClassName(type).item(1)
+  if (inputFieldValue.length > 0) {
     const filteredSearchOptions = {
       ...advancedSearchOptions,
       [type]: advancedSearchOptions[type].filter((item) => item.includes(inputFieldValue))
     }
-    advancedSearchOptions = filteredSearchOptions
-    updateAdvancedSearchOptions(filteredSearchOptions)
+    showAdvancedSearchOptions(filteredSearchOptions)
+    if (list.classList.contains('d-none')) {
+      list.classList.remove('d-none')
+      list.classList.add('d-flex')
+    }
   } else {
     setAdvancedSearchOptions(activeRecipes)
+    if (list.classList.contains('d-flex')) {
+      list.classList.remove('d-flex')
+      list.classList.add('d-none')
+    }
   }
 }
 
