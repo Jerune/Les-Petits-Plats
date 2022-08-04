@@ -10961,16 +10961,28 @@ ul {
   margin: 0;
 }
 
-#search_general_input::-moz-placeholder {
+.placeholder-opacity-25::-moz-placeholder {
   opacity: 0.25;
 }
 
-#search_general_input:-ms-input-placeholder {
+.placeholder-opacity-25:-ms-input-placeholder {
   opacity: 0.25;
 }
 
-#search_general_input::placeholder {
+.placeholder-opacity-25::placeholder {
   opacity: 0.25;
+}
+
+.placeholder-opacity-50::-moz-placeholder {
+  opacity: 0.5;
+}
+
+.placeholder-opacity-50:-ms-input-placeholder {
+  opacity: 0.5;
+}
+
+.placeholder-opacity-50::placeholder {
+  opacity: 0.5;
 }
 
 .search_general_icon {
@@ -10982,5 +10994,8 @@ ul {
 }
 
 .search_items_list {
-  max-height: 320px;
+  max-height: 335px;
+}
+.search_items_list li {
+  width: 225px;
 }/*# sourceMappingURL=main.css.map */

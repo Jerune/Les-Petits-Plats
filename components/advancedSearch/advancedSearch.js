@@ -33,7 +33,7 @@ function updateAdvancedSearchOptions (advancedSearchOptions) {
     const list = document.getElementsByClassName(type).item(1)
     let listItems = ''
     advancedSearchOptions[type].forEach((element) => {
-      listItems += `<li class="p-0 me-2">${element.charAt(0).toUpperCase() + element.slice(1)}</li>`
+      listItems += `<li class="py-1 fw-normal">${element.charAt(0).toUpperCase() + element.slice(1)}</li>`
     })
     if (listItems.length > 0) {
       list.innerHTML = listItems
@@ -44,19 +44,27 @@ function updateAdvancedSearchOptions (advancedSearchOptions) {
 function toggleAdvancedSearchOptions (type) {
   const icon = document.getElementsByClassName(type).item(0)
   const iconState = icon.getAttribute('data-state')
+  const inputField = document.getElementById(type)
   const list = document.getElementsByClassName(type).item(1)
+  const placeholderValueOpen = type === 'ingredients' ? 'Rechercher un ingédient' : type === 'machines' ? 'Rechercher un appareil' : type === 'utensils' ? 'Rechercher un ustensil' : ''
+  const placeholderValueClosed = type === 'ingredients' ? 'Ingredients' : type === 'machines' ? 'Appareils' : type === 'utensils' ? 'Ustensils' : ''
   if (iconState === 'show') {
-    icon.classList.remove('.bi-chevron-down')
-    icon.classList.add('.bi-chevron-up')
-    icon.setAttribute('state', 'hide')
+    icon.classList.remove('bi-chevron-down')
+    icon.classList.add('bi-chevron-up')
+    icon.setAttribute('data-state', 'hide')
     list.classList.remove('d-none')
     list.classList.add('d-flex')
+    inputField.placeholder = placeholderValueOpen
+    inputField.classList.add('placeholder-opacity-50')
   } else if (iconState === 'hide') {
-    icon.classList.remove('.bi-chevron-up')
-    icon.classList.add('.bi-chevron-down')
-    icon.setAttribute('state', 'show')
-    list.classList.remove('d-none')
-    list.classList.add('d-flex')
+    icon.classList.remove('bi-chevron-up')
+    icon.classList.add('bi-chevron-down')
+    icon.setAttribute('data-state', 'show')
+    list.classList.remove('d-flex')
+    list.classList.add('d-none')
+    inputField.placeholder = 'Rechercher un ingédient'
+    inputField.placeholder = placeholderValueClosed
+    inputField.classList.remove('placeholder-opacity-50')
   }
 }
 
