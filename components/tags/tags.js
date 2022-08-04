@@ -1,5 +1,6 @@
 // @ts-nocheck
 let tags = []
+const tagsSection = document.getElementById('tags')
 
 // ---------------------------- TAGS FUNCTIONS ---------------
 
@@ -32,6 +33,11 @@ function showTags (tagsArray) {
       </li>
     `
   })
+  if (tagsItems !== '' && !tagsSection.classList.contains('mt-4')) {
+    tagsSection.classList.add('mt-4')
+  } else {
+    tagsSection.classList.remove('mt-4')
+  }
   tagsList.innerHTML = tagsItems
 }
 
