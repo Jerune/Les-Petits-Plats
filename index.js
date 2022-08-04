@@ -3,10 +3,12 @@
 import { recipes } from './Data/recipes.js'
 import { showRecipeCards } from './components/recipeCards/recipeCards.js'
 import { handleGeneralSearch } from './components/searchbar/searchBar.js'
-import { setAdvancedSearchOptions, filterAdvancedSearchOptions, toggleAdvancedSearchOptions, setPlaceholder, setTags } from './components/advancedSearch/advancedSearch.js'
+import { setAdvancedSearchOptions, filterAdvancedSearchOptions, toggleAdvancedSearchOptions, setPlaceholder } from './components/advancedSearch/advancedSearch.js'
+import { setTags, deleteTags } from './components/tags/tags.js'
 
 // Expose functions globally
 window.setTags = setTags
+window.deleteTags = deleteTags
 
 // DOM
 const searchGeneralInput = document.getElementById('search_general_input')
