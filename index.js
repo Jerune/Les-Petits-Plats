@@ -14,11 +14,24 @@ const machinesIcon = document.getElementsByClassName('machines').item(0)
 const utensilsInput = document.getElementById('utensils')
 const utensilsIcon = document.getElementsByClassName('utensils').item(0)
 
-// Event Listeners
+// -----------------   Event Listeners ----------------------------
+// General Search input event filtering
 searchGeneralInput.addEventListener('input', () => handleGeneralSearch(recipes))
+
+// Advanced Search input event filtering
 ingredientsInput.addEventListener('input', () => filterAdvancedSearchOptions('ingredients'))
 machinesInput.addEventListener('input', () => filterAdvancedSearchOptions('machines'))
 utensilsInput.addEventListener('input', () => filterAdvancedSearchOptions('utensils'))
+
+// Advanced Search blur / focus event to toggle list on/off
+ingredientsInput.addEventListener('blur', () => toggleAdvancedSearchOptions('ingredients'))
+machinesInput.addEventListener('blur', () => toggleAdvancedSearchOptions('machines'))
+utensilsInput.addEventListener('blur', () => toggleAdvancedSearchOptions('utensils'))
+ingredientsInput.addEventListener('focus', () => toggleAdvancedSearchOptions('ingredients'))
+machinesInput.addEventListener('focus', () => toggleAdvancedSearchOptions('machines'))
+utensilsInput.addEventListener('focus', () => toggleAdvancedSearchOptions('utensils'))
+
+// Toggle icons click events to manually open / close Advanced Search Options list
 ingredientsIcon.addEventListener('click', () => toggleAdvancedSearchOptions('ingredients'))
 machinesIcon.addEventListener('click', () => toggleAdvancedSearchOptions('machines'))
 utensilsIcon.addEventListener('click', () => toggleAdvancedSearchOptions('utensils'))
