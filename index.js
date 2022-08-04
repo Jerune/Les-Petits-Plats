@@ -3,7 +3,7 @@
 import { recipes } from './Data/recipes.js'
 import { showRecipeCards } from './components/recipeCards/recipeCards.js'
 import { handleGeneralSearch } from './components/searchbar/searchBar.js'
-import { setAdvancedSearchOptions, filterAdvancedSearchOptions, toggleAdvancedSearchOptions } from './components/advancedSearch/advancedSearch.js'
+import { setAdvancedSearchOptions, filterAdvancedSearchOptions, toggleAdvancedSearchOptions, setPlaceholder } from './components/advancedSearch/advancedSearch.js'
 
 // DOM
 const searchGeneralInput = document.getElementById('search_general_input')
@@ -23,7 +23,15 @@ ingredientsInput.addEventListener('input', () => filterAdvancedSearchOptions('in
 machinesInput.addEventListener('input', () => filterAdvancedSearchOptions('machines'))
 utensilsInput.addEventListener('input', () => filterAdvancedSearchOptions('utensils'))
 
-// Toggle icons click events to manually open / close Advanced Search Options list
+// Advanced Search input focus/blur placeholder change event
+ingredientsInput.addEventListener('focus', () => setPlaceholder('ingredients', 'open'))
+machinesInput.addEventListener('focus', () => setPlaceholder('machines', 'open'))
+utensilsInput.addEventListener('focus', () => setPlaceholder('utensils', 'open'))
+ingredientsInput.addEventListener('blur', () => setPlaceholder('ingredients', 'close'))
+machinesInput.addEventListener('blur', () => setPlaceholder('machines', 'close'))
+utensilsInput.addEventListener('blur', () => setPlaceholder('utensils', 'close'))
+
+// Toggle Advanced Search Options list icon click event to manually open/close list
 ingredientsIcon.addEventListener('click', () => toggleAdvancedSearchOptions('ingredients'))
 machinesIcon.addEventListener('click', () => toggleAdvancedSearchOptions('machines'))
 utensilsIcon.addEventListener('click', () => toggleAdvancedSearchOptions('utensils'))

@@ -42,31 +42,37 @@ function showAdvancedSearchOptions (advancedSearchOptions) {
     }
   })
 }
+function setPlaceholder (type, action) {
+  const inputField = document.getElementById(type)
+  const placeholderValueOpen = type === 'ingredients' ? 'Rechercher un ingédient' : type === 'machines' ? 'Rechercher un appareil' : type === 'utensils' ? 'Rechercher un ustensil' : ''
+  const placeholderValueClosed = type === 'ingredients' ? 'Ingredients' : type === 'machines' ? 'Appareils' : type === 'utensils' ? 'Ustensils' : ''
+  if (action === 'close') {
+    inputField.placeholder = placeholderValueClosed
+    inputField.classList.remove('placeholder-opacity-50')
+  } else if (action === 'open') {
+    inputField.placeholder = placeholderValueOpen
+    inputField.classList.add('placeholder-opacity-50')
+  }
+}
 
 function toggleAdvancedSearchOptions (type) {
   const icon = document.getElementsByClassName(type).item(0)
   const iconState = icon.getAttribute('data-state')
-  const inputField = document.getElementById(type)
   const list = document.getElementsByClassName(type).item(1)
-  const placeholderValueOpen = type === 'ingredients' ? 'Rechercher un ingédient' : type === 'machines' ? 'Rechercher un appareil' : type === 'utensils' ? 'Rechercher un ustensil' : ''
-  const placeholderValueClosed = type === 'ingredients' ? 'Ingredients' : type === 'machines' ? 'Appareils' : type === 'utensils' ? 'Ustensils' : ''
   if (iconState === 'show') {
     icon.classList.remove('bi-chevron-down')
     icon.classList.add('bi-chevron-up')
     icon.setAttribute('data-state', 'hide')
     list.classList.remove('d-none')
     list.classList.add('d-flex')
-    inputField.placeholder = placeholderValueOpen
-    inputField.classList.add('placeholder-opacity-50')
+    setPlaceholder(type, 'open')
   } else if (iconState === 'hide') {
     icon.classList.remove('bi-chevron-up')
     icon.classList.add('bi-chevron-down')
     icon.setAttribute('data-state', 'show')
     list.classList.remove('d-flex')
     list.classList.add('d-none')
-    inputField.placeholder = 'Rechercher un ingédient'
-    inputField.placeholder = placeholderValueClosed
-    inputField.classList.remove('placeholder-opacity-50')
+    setPlaceholder(type, 'close')
   }
 }
 
@@ -82,14 +88,16 @@ function filterAdvancedSearchOptions (type) {
     if (list.classList.contains('d-none')) {
       list.classList.remove('d-none')
       list.classList.add('d-flex')
+      setPlaceholder(type, 'open')
     }
   } else {
     setAdvancedSearchOptions(activeRecipes)
     if (list.classList.contains('d-flex')) {
       list.classList.remove('d-flex')
       list.classList.add('d-none')
+      setPlaceholder(type, 'closed')
     }
   }
 }
 
-export { setAdvancedSearchOptions, toggleAdvancedSearchOptions, filterAdvancedSearchOptions }
+export { setAdvancedSearchOptions, toggleAdvancedSearchOptions, filterAdvancedSearchOptions, setPlaceholder }
