@@ -1,4 +1,7 @@
 // @ts-nocheck
+// Imports
+import { updateGeneralSearch } from '../searchbar/searchBar.js'
+
 let tags = []
 const tagsSection = document.getElementById('tags')
 
@@ -10,14 +13,14 @@ function setTags (type, element) {
     activeTags = tags.filter((tag) => tag.title === element.innerText.toLowerCase())
   }
   if (activeTags.length === 0) {
-    const tagID = tags.length + 1
     const bgColor = type === 'ingredients' ? 'bg-primary' : type === 'machines' ? 'bg-success' : type === 'utensils' ? 'bg-danger' : ''
     const newTag = {
       title: element.innerText.toLowerCase(),
       bg: bgColor,
-      id: tagID
+      tagType: type
     }
     tags.push(newTag)
+    updateGeneralSearch(tags)
     showTags(tags)
   }
 }
@@ -35,7 +38,7 @@ function showTags (tagsArray) {
   })
   if (tagsItems !== '' && !tagsSection.classList.contains('mt-4')) {
     tagsSection.classList.add('mt-4')
-  } else {
+  } else if (tagsItems === '' && tagsSection.classList.contains('mt-4')) {
     tagsSection.classList.remove('mt-4')
   }
   tagsList.innerHTML = tagsItems
@@ -43,11 +46,10 @@ function showTags (tagsArray) {
 
 function deleteTags (element) {
   const tagTitle = element.previousElementSibling.innerText.toLowerCase()
-  console.log(tagTitle)
-  console.log(tags)
   const newTagsArray = tags.filter((tag) => tag.title !== tagTitle)
   tags = newTagsArray
   showTags(tags)
+  updateGeneralSearch(tags)
 }
 
 export { setTags, showTags, deleteTags }
