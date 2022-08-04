@@ -49,8 +49,7 @@ function updateGeneralSearch (tagsArray) {
   })
   console.log(utensils)
   const filteredRecipes = activeRecipes.filter((recipe) => recipe.appliance.toLowerCase().includes(machines) && recipe.ustensils.some((ustensil) => ustensil.toLowerCase().includes(utensils)) && recipe.ingredients.some((ingredient) => ingredient.ingredient.toLowerCase().includes(ingredients)))
-  activeRecipes = filteredRecipes
-  showRecipeCards(activeRecipes)
+  showRecipeCards(filteredRecipes)
 }
 
 export { handleGeneralSearch, updateGeneralSearch }
