@@ -3,7 +3,10 @@
 import { recipes } from './Data/recipes.js'
 import { showRecipeCards } from './components/recipeCards/recipeCards.js'
 import { handleGeneralSearch } from './components/searchbar/searchBar.js'
-import { setAdvancedSearchOptions, filterAdvancedSearchOptions, toggleAdvancedSearchOptions, setPlaceholder } from './components/advancedSearch/advancedSearch.js'
+import { setAdvancedSearchOptions, filterAdvancedSearchOptions, toggleAdvancedSearchOptions, setPlaceholder, setTags } from './components/advancedSearch/advancedSearch.js'
+
+// Expose functions globally
+window.setTags = setTags
 
 // DOM
 const searchGeneralInput = document.getElementById('search_general_input')
@@ -46,5 +49,3 @@ function initSearchOptions (advancedSearchOptions) {
 
 initRecipes(recipes)
 initSearchOptions(recipes)
-
-export { initRecipes, initSearchOptions }

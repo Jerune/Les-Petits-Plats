@@ -2,6 +2,45 @@
 // Variables
 let activeRecipes = []
 let advancedSearchOptions = {}
+const tags = []
+
+// ---------------------------- TAGS FUNCTIONS ---------------
+
+function setTags (type, ev) {
+  console.log(type)
+  console.log(ev)
+  let activeTags = []
+  if (tags.length > 0) {
+    activeTags = tags.filter((tag) => tag.lowerCase().title !== ev.innerText.lowerCase())
+  }
+  if (activeTags.length === 0) {
+    const tagID = tags.length + 1
+    const bgColor = type === 'ingredients' ? 'bg-primary' : type === 'machines' ? 'bg-success' : type === 'utensils' ? 'bg-danger' : ''
+    const newTag = {
+      title: ev.innerText,
+      bg: bgColor,
+      id: tagID
+    }
+    tags.push(newTag)
+    showTags(tags)
+  }
+}
+
+function showTags (tagsArray) {
+  const tagsList = document.getElementById('search_tags')
+  let tagsItems = ''
+  tagsArray.forEach((tag) => {
+    tagsItems += `
+      <li class="d-flex flex-row justify-content-between align-items-center py-1 px-3 w-auto ${tag.bg} text-white rounded-2 fs-2 me-3">
+          <span class="search_tags_title pe-3">${tag.title}</span>
+          <i id=${tag.id} class="bi bi-x-circle fs-1"></i>
+      </li>
+    `
+  })
+  tagsList.innerHTML = tagsItems
+}
+
+// --------------------- ADVANCED SEARCH OPTIONS FUNCTIONS ---------------
 
 // Set available advanced search options based on current recipes
 function setAdvancedSearchOptions (recipesArray) {
@@ -35,7 +74,7 @@ function showAdvancedSearchOptions (advancedSearchOptions) {
     const list = document.getElementsByClassName(type).item(1)
     let listItems = ''
     advancedSearchOptions[type].forEach((element) => {
-      listItems += `<li class="py-1 fw-normal">${element.charAt(0).toUpperCase() + element.slice(1)}</li>`
+      listItems += `<li onclick="setTags('${type}', this)" class="py-1 fw-normal">${element.charAt(0).toUpperCase() + element.slice(1)}</li>`
     })
     if (listItems.length > 0) {
       list.innerHTML = listItems
@@ -100,4 +139,4 @@ function filterAdvancedSearchOptions (type) {
   }
 }
 
-export { setAdvancedSearchOptions, toggleAdvancedSearchOptions, filterAdvancedSearchOptions, setPlaceholder }
+export { setAdvancedSearchOptions, toggleAdvancedSearchOptions, filterAdvancedSearchOptions, setPlaceholder, setTags }
