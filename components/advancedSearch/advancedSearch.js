@@ -7,17 +7,17 @@ const tags = []
 // ---------------------------- TAGS FUNCTIONS ---------------
 
 function setTags (type, ev) {
-  console.log(type)
-  console.log(ev)
   let activeTags = []
   if (tags.length > 0) {
-    activeTags = tags.filter((tag) => tag.lowerCase().title !== ev.innerText.lowerCase())
+    activeTags = tags.filter((tag) => tag.title === ev.innerText.toLowerCase())
+    console.log(ev.innerText)
+    console.log(activeTags)
   }
   if (activeTags.length === 0) {
     const tagID = tags.length + 1
     const bgColor = type === 'ingredients' ? 'bg-primary' : type === 'machines' ? 'bg-success' : type === 'utensils' ? 'bg-danger' : ''
     const newTag = {
-      title: ev.innerText,
+      title: ev.innerText.toLowerCase(),
       bg: bgColor,
       id: tagID
     }
@@ -32,8 +32,8 @@ function showTags (tagsArray) {
   tagsArray.forEach((tag) => {
     tagsItems += `
       <li class="d-flex flex-row justify-content-between align-items-center py-1 px-3 w-auto ${tag.bg} text-white rounded-2 fs-2 me-3">
-          <span class="search_tags_title pe-3">${tag.title}</span>
-          <i id=${tag.id} class="bi bi-x-circle fs-1"></i>
+          <span class="search_tags_title pe-3">${tag.title.charAt(0).toUpperCase() + tag.title.slice(1)}</span>
+          <i data-id=${tag.id} class="bi bi-x-circle fs-1"></i>
       </li>
     `
   })
