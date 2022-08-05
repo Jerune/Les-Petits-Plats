@@ -28,6 +28,7 @@ function setAdvancedSearchOptions (recipesArray) {
       }
     })
   })
+  console.log(advancedSearchOptions)
   showAdvancedSearchOptions(advancedSearchOptions)
 }
 
@@ -41,6 +42,10 @@ function showAdvancedSearchOptions (advancedSearchOptions) {
     })
     if (listItems.length > 0) {
       list.innerHTML = listItems
+      !list.classList.contains('pt-3') && list.classList.add('pt-3')
+    } else {
+      list.innerHTML = ''
+      list.classList.contains('pt-3') && list.classList.remove('pt-3')
     }
   })
 }
