@@ -36,7 +36,6 @@ function handleGeneralSearch (recipesArray) {
       setAdvancedSearchOptions(recipes)
     }
   }
-  console.log(activeRecipes)
 }
 
 function updateGeneralSearch (tagsArray) {
@@ -65,7 +64,11 @@ function updateGeneralSearch (tagsArray) {
               ...ingr,
               ingredient: ingr.ingredient.toLowerCase()
             }
-          })
+          }),
+          ustensils: recipe.ustensils.map((ustensil) => {
+            return ustensil.toLowerCase()
+          }),
+          appliance: recipe.appliance.toLowerCase()
         }
       )
     })
@@ -80,15 +83,15 @@ function updateGeneralSearch (tagsArray) {
 }
 
 function removeTagsFromRecipesAndsetAdvancedSearchOptions (filteredRecipes) {
-  console.log(activeTags)
   const recipesWithActiveTagsRemoved = filteredRecipes.map((recipe) => {
     return {
       ...recipe,
-      ustensils: activeTags.utensils.length > 0 ? recipe.ustensils.filter((ustensil) => !ustensil.includes(activeTags.utensils)) : recipe.ustensils,
-      appliance: activeTags.machine.length > 0 ? recipe.appliance.includes(activeTags.machine) : recipe.appliance,
-      ingredients: activeTags.ingredients.length > 0 ? recipe.ingredients.filter((ingr) => !ingr.ingredient.includes(activeTags.ingredients)) : recipe.ingredients
+      ustensils: activeTags.utensils.length > 0 ? recipe.ustensils.filter((ustensil) => !activeTags.utensils.some((value) => ustensil.includes(value))) : recipe.ustensils,
+      appliance: activeTags.machine.length > 0 ? '' : recipe.appliance,
+      ingredients: activeTags.ingredients.length > 0 ? recipe.ingredients.filter((ingr) => !activeTags.ingredients.some((value) => ingr.ingredient.includes(value))) : recipe.ingredients
     }
   })
+  console.log(recipesWithActiveTagsRemoved)
   setAdvancedSearchOptions(recipesWithActiveTagsRemoved)
 }
 
