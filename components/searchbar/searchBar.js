@@ -22,6 +22,9 @@ function handleGeneralSearch () {
       activeRecipes = newRecipes
       showRecipeCards(activeRecipes)
       setAdvancedSearchOptions(activeRecipes)
+    } else {
+      showRecipeCards(newRecipes)
+      setAdvancedSearchOptions(newRecipes)
     }
   } else {
     activeRecipes = recipes
