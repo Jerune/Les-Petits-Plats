@@ -28,8 +28,16 @@ function setAdvancedSearchOptions (recipesArray) {
       }
     })
   })
-  console.log(advancedSearchOptions)
-  showAdvancedSearchOptions(advancedSearchOptions)
+  const filteredSearchOptions = {}
+  const ingredientsInputFieldValue = document.getElementById('ingredients').value.toLowerCase()
+  const machinesInputFieldValue = document.getElementById('machines').value.toLowerCase()
+  const utensilsInputFieldValue = document.getElementById('utensils').value.toLowerCase()
+
+  filteredSearchOptions.ingredients = advancedSearchOptions.ingredients.filter((searchOptionValue) => searchOptionValue.includes(ingredientsInputFieldValue))
+  filteredSearchOptions.machines = advancedSearchOptions.machines.filter((searchOptionValue) => searchOptionValue.includes(machinesInputFieldValue))
+  filteredSearchOptions.utensils = advancedSearchOptions.utensils.filter((searchOptionValue) => searchOptionValue.includes(utensilsInputFieldValue))
+
+  showAdvancedSearchOptions(filteredSearchOptions)
 }
 
 function showAdvancedSearchOptions (advancedSearchOptions) {
@@ -46,6 +54,7 @@ function showAdvancedSearchOptions (advancedSearchOptions) {
     } else {
       list.innerHTML = ''
       list.classList.contains('pt-3') && list.classList.remove('pt-3')
+      toggleAdvancedSearchOptions(type)
     }
   })
 }
