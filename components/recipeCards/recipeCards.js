@@ -4,13 +4,14 @@ const recipeCardsElement = document.querySelector('.recipes')
 
 function showRecipeCards (recipesData) {
   let recipeCards = ''
-  recipesData.forEach(recipe => {
-    let recipeIngredients = ''
-    recipe.ingredients.forEach(ingredient => {
-      recipeIngredients += `<li><strong>${ingredient.ingredient}</strong>${ingredient.quantity ? ` : ${ingredient.quantity} ` : ''}${ingredient.unit ? ingredient.unit : ''}</li>`
-    })
+  if (recipesData.length > 0) {
+    recipesData.forEach(recipe => {
+      let recipeIngredients = ''
+      recipe.ingredients.forEach(ingredient => {
+        recipeIngredients += `<li><strong>${ingredient.ingredient}</strong>${ingredient.quantity ? ` : ${ingredient.quantity} ` : ''}${ingredient.unit ? ingredient.unit : ''}</li>`
+      })
 
-    recipeCards += `
+      recipeCards += `
         <div class="col-4">
             <div class="card border-0 h-100">
                 <div class="card-img-top bg-dark" style="height: 178px ;"></div>
@@ -29,9 +30,17 @@ function showRecipeCards (recipesData) {
             </div>
         </div>
         `
-  })
+    })
 
-  recipeCardsElement.innerHTML = recipeCards
+    recipeCardsElement.innerHTML = recipeCards
+  } else {
+    recipeCardsElement.innerHTML = `
+            <div class="col-12 d-flex flex-column align-items-center py-5">
+                <h1 class="fs-1 pb-3">Aucune recette ne correspond à votre critère...</h1>
+                <h3 class="fs-2">vous pouvez chercher « tarte aux pommes », « poisson », etc.</h3>
+            </div>
+            `
+  }
 }
 
 export { showRecipeCards }

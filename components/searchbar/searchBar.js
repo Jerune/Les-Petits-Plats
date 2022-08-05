@@ -4,37 +4,39 @@ import { recipes } from '../../data/recipes.js'
 import { showRecipeCards } from '../recipeCards/recipeCards.js'
 import { setAdvancedSearchOptions } from '../advancedSearch/advancedSearch.js'
 
-// DOM
-const recipeCards = document.querySelector('.recipes')
-
 // Variables
 let activeRecipes = recipes
+let filteredRecipes = []
 
 // Manage general search input users
 function handleGeneralSearch () {
   const searchGeneralInput = document.getElementById('search_general_input').value.toLowerCase()
   if (searchGeneralInput.length > 2) {
-    const filteredRecipes = activeRecipes.filter((recipe) => recipe.name.toLowerCase().includes(searchGeneralInput) || recipe.description.includes(searchGeneralInput) || recipe.ingredients.some((ingredient) => ingredient.ingredient.toLowerCase().includes(searchGeneralInput)))
+    let newRecipes = []
     if (filteredRecipes.length > 0) {
-      activeRecipes = filteredRecipes
+      newRecipes = filteredRecipes.filter((recipe) => recipe.name.toLowerCase().includes(searchGeneralInput) || recipe.description.includes(searchGeneralInput) || recipe.ingredients.some((ingredient) => ingredient.ingredient.toLowerCase().includes(searchGeneralInput)))
+    } else if (filteredRecipes.length === 0) {
+      newRecipes = activeRecipes.filter((recipe) => recipe.name.toLowerCase().includes(searchGeneralInput) || recipe.description.includes(searchGeneralInput) || recipe.ingredients.some((ingredient) => ingredient.ingredient.toLowerCase().includes(searchGeneralInput)))
+    }
+    if (newRecipes.length > 0) {
+      activeRecipes = newRecipes
       showRecipeCards(activeRecipes)
       setAdvancedSearchOptions(activeRecipes)
-      console.log(activeRecipes)
-    } else {
-      recipeCards.innerHTML = `
-            <div class="col-12 d-flex flex-column align-items-center py-5">
-                <h1 class="fs-1 pb-3">Aucune recette ne correspond à votre critère...</h1>
-                <h3 class="fs-2">vous pouvez chercher « tarte aux pommes », « poisson », etc.</h3>
-            </div>
-            `
     }
   } else {
-    showRecipeCards(recipes)
-    setAdvancedSearchOptions(recipes)
+    activeRecipes = recipes
+    if (filteredRecipes.length > 0) {
+      showRecipeCards(filteredRecipes)
+      setAdvancedSearchOptions(filteredRecipes)
+    } else {
+      showRecipeCards(recipes)
+      setAdvancedSearchOptions(recipes)
+    }
   }
 }
 
 function updateGeneralSearch (tagsArray) {
+  console.log(tagsArray)
   const ingredients = []
   const machines = []
   const utensils = []
@@ -47,9 +49,28 @@ function updateGeneralSearch (tagsArray) {
           ? utensils.push(tag.title)
           : console.log('an error has occured')
   })
-  console.log(utensils)
-  const filteredRecipes = activeRecipes.filter((recipe) => recipe.appliance.toLowerCase().includes(machines) && recipe.ustensils.some((ustensil) => ustensil.toLowerCase().includes(utensils)) && recipe.ingredients.some((ingredient) => ingredient.ingredient.toLowerCase().includes(ingredients)))
-  showRecipeCards(filteredRecipes)
+  if (tagsArray.length > 0) {
+    const recipesInLowerCase = activeRecipes.map((recipe) => {
+      return (
+        {
+          ...recipe,
+          ingredients: recipe.ingredients.map((ingr) => {
+            return {
+              ...ingr,
+              ingredient: ingr.ingredient.toLowerCase()
+            }
+          })
+        }
+      )
+    })
+    filteredRecipes = recipesInLowerCase.filter((recipe) => recipe.appliance.toLowerCase().includes(machines) && utensils.every((value) => recipe.ustensils.includes(value)) && ingredients.every((value) => recipe.ingredients.ingredient.includes(value)))
+    showRecipeCards(filteredRecipes)
+    setAdvancedSearchOptions(filteredRecipes)
+  } else {
+    filteredRecipes = []
+    showRecipeCards(activeRecipes)
+    setAdvancedSearchOptions(activeRecipes)
+  }
 }
 
 export { handleGeneralSearch, updateGeneralSearch }
