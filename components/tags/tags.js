@@ -48,8 +48,8 @@ function deleteTags (element) {
   const tagTitle = element.previousElementSibling.innerText.toLowerCase()
   const newTagsArray = tags.filter((tag) => tag.title !== tagTitle)
   tags = newTagsArray
-  showTags(tags)
   updateGeneralSearch(tags)
+  showTags(tags)
 }
 
 export { setTags, showTags, deleteTags }

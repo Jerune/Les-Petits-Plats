@@ -36,15 +36,14 @@ function handleGeneralSearch () {
 }
 
 function updateGeneralSearch (tagsArray) {
-  console.log(tagsArray)
   const ingredients = []
-  const machines = []
+  const machine = []
   const utensils = []
   tagsArray.forEach((tag) => {
     tag.tagType === 'ingredients'
       ? ingredients.push(tag.title)
       : tag.tagType === 'machines'
-        ? machines.push(tag.title)
+        ? machine.push(tag.title)
         : tag.tagType === 'utensils'
           ? utensils.push(tag.title)
           : console.log('an error has occured')
@@ -63,9 +62,17 @@ function updateGeneralSearch (tagsArray) {
         }
       )
     })
-    filteredRecipes = recipesInLowerCase.filter((recipe) => recipe.appliance.toLowerCase().includes(machines) && utensils.every((value) => recipe.ustensils.includes(value)) && ingredients.every((value) => recipe.ingredients.some((ingredient) => ingredient.ingredient.includes(value))))
+    filteredRecipes = recipesInLowerCase.filter((recipe) => recipe.appliance.toLowerCase().includes(machine) && utensils.every((value) => recipe.ustensils.includes(value)) && ingredients.every((value) => recipe.ingredients.some((ingredient) => ingredient.ingredient.includes(value))))
     showRecipeCards(filteredRecipes)
-    setAdvancedSearchOptions(filteredRecipes)
+    const recipesWithActiveTagsRemoved = filteredRecipes.map((recipe) => {
+      return {
+        ...recipe,
+        ustensils: utensils.length > 0 ? recipe.ustensils.filter((ustensil) => !ustensil.includes(utensils)) : recipe.ustensils,
+        appliance: machine.length > 0 ? recipe.appliance.includes(machine) : recipe.appliance,
+        ingredients: ingredients.length > 0 ? recipe.ingredients.filter((ingr) => !ingr.ingredient.includes(ingredients)) : recipe.ingredients
+      }
+    })
+    setAdvancedSearchOptions(recipesWithActiveTagsRemoved)
   } else {
     filteredRecipes = []
     showRecipeCards(activeRecipes)
