@@ -15,15 +15,15 @@ function setAdvancedSearchOptions (recipesArray) {
   }
   recipesArray.forEach((recipe) => {
     recipe.ingredients.forEach((ingredient) => {
-      if (!advancedSearchOptions.ingredients.includes(ingredient.ingredient.toLowerCase())) {
+      if (recipe.ingredients.length > 0 && !advancedSearchOptions.ingredients.includes(ingredient.ingredient.toLowerCase())) {
         advancedSearchOptions.ingredients.push(ingredient.ingredient.toLowerCase())
       }
     })
-    if (!advancedSearchOptions.machines.includes(recipe.appliance.toLowerCase())) {
+    if (recipe.appliance.length > 0 && !advancedSearchOptions.machines.includes(recipe.appliance.toLowerCase())) {
       advancedSearchOptions.machines.push(recipe.appliance.toLowerCase())
     }
     recipe.ustensils.forEach((utensil) => {
-      if (!advancedSearchOptions.utensils.includes(utensil.toLowerCase())) {
+      if (recipe.ustensils.length > 0 && !advancedSearchOptions.utensils.includes(utensil.toLowerCase())) {
         advancedSearchOptions.utensils.push(utensil.toLowerCase())
       }
     })
