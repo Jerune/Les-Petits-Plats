@@ -63,7 +63,7 @@ function updateGeneralSearch (tagsArray) {
         }
       )
     })
-    filteredRecipes = recipesInLowerCase.filter((recipe) => recipe.appliance.toLowerCase().includes(machines) && utensils.every((value) => recipe.ustensils.includes(value)) && ingredients.every((value) => recipe.ingredients.ingredient.includes(value)))
+    filteredRecipes = recipesInLowerCase.filter((recipe) => recipe.appliance.toLowerCase().includes(machines) && utensils.every((value) => recipe.ustensils.includes(value)) && ingredients.every((value) => recipe.ingredients.some((ingredient) => ingredient.ingredient.includes(value))))
     showRecipeCards(filteredRecipes)
     setAdvancedSearchOptions(filteredRecipes)
   } else {
