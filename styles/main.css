@@ -10961,6 +10961,11 @@ ul {
   margin: 0;
 }
 
+.main {
+  margin-top: 105px;
+  margin-bottom: 60px;
+}
+
 .placeholder-opacity-25::-moz-placeholder {
   opacity: 0.25;
 }
@@ -10995,8 +11000,18 @@ ul {
 
 .search_items_list {
   max-height: 335px;
+  overflow-y: auto;
 }
 .search_items_list li {
   width: 225px;
   cursor: pointer;
+}
+
+.ingredients,
+.utensils {
+  max-width: 452px;
+}
+
+.machines {
+  max-width: 227px;
 }/*# sourceMappingURL=main.css.map */

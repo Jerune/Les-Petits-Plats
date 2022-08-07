@@ -1,7 +1,18 @@
 .search_items_list{
     max-height: 335px;
+    overflow-y: auto;
     li{
         width: 225px;
         cursor: pointer;
     }
 }
+
+.ingredients,
+.utensils{
+    max-width: 452px;
+}
+
+.machines{
+    max-width: 227px;
+}
+
