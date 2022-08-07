@@ -11003,15 +11003,18 @@ ul {
   overflow-y: auto;
 }
 .search_items_list li {
-  width: 225px;
+  width: 50%;
   cursor: pointer;
 }
 
 .ingredients,
 .utensils {
-  max-width: 452px;
+  max-width: 450px;
 }
 
 .machines {
-  max-width: 227px;
+  max-width: 225px;
+}
+.machines li {
+  width: 100%;
 }/*# sourceMappingURL=main.css.map */
