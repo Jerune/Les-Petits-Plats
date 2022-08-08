@@ -72,46 +72,64 @@ function setPlaceholder (type, action) {
 }
 
 function toggleAdvancedSearchOptions (type) {
-  const icon = document.getElementsByClassName(type).item(0)
-  const iconState = icon.getAttribute('data-state')
-  const list = document.getElementsByClassName(type).item(1)
-  if (iconState === 'show') {
-    icon.classList.remove('bi-chevron-down')
-    icon.classList.add('bi-chevron-up')
-    icon.setAttribute('data-state', 'hide')
-    list.classList.remove('d-none')
-    list.classList.add('d-flex')
+  const types = ['ingredients', 'machines', 'utensils']
+  const otherTypes = types.filter((lst) => lst !== type)
+  const otherIcon1 = document.getElementsByClassName(otherTypes[0]).item(0)
+  const otherList1 = document.getElementsByClassName(otherTypes[0]).item(1)
+  const otherIcon2 = document.getElementsByClassName(otherTypes[1]).item(0)
+  const otherList2 = document.getElementsByClassName(otherTypes[1]).item(1)
+  const activeIcon = document.getElementsByClassName(type).item(0)
+  const activeIconState = activeIcon.getAttribute('data-state')
+  const activeList = document.getElementsByClassName(type).item(1)
+  if (activeIconState === 'hide') {
+    activeIcon.classList.remove('bi-chevron-down')
+    activeIcon.classList.add('bi-chevron-up')
+    activeIcon.setAttribute('data-state', 'show')
+    activeList.classList.remove('d-none')
+    activeList.classList.add('d-flex')
     setPlaceholder(type, 'open')
-  } else if (iconState === 'hide') {
-    icon.classList.remove('bi-chevron-up')
-    icon.classList.add('bi-chevron-down')
-    icon.setAttribute('data-state', 'show')
-    list.classList.remove('d-flex')
-    list.classList.add('d-none')
+    if (otherIcon1.getAttribute('data-state') === 'show') {
+      otherIcon1.classList.remove('bi-chevron-up')
+      otherIcon1.classList.add('bi-chevron-down')
+      otherIcon1.setAttribute('data-state', 'hide')
+      otherList1.classList.remove('d-flex')
+      otherList1.classList.add('d-none')
+      setPlaceholder(otherTypes[0], 'close')
+    } else if (otherIcon2.getAttribute('data-state') === 'show') {
+      otherIcon2.classList.remove('bi-chevron-up')
+      otherIcon2.classList.add('bi-chevron-down')
+      otherIcon2.setAttribute('data-state', 'hide')
+      otherList2.classList.remove('d-flex')
+      otherList2.classList.add('d-none')
+      setPlaceholder(otherTypes[1], 'close')
+    }
+  } else if (activeIconState === 'show') {
+    activeIcon.classList.remove('bi-chevron-up')
+    activeIcon.classList.add('bi-chevron-down')
+    activeIcon.setAttribute('data-state', 'hide')
+    activeList.classList.remove('d-flex')
+    activeList.classList.add('d-none')
     setPlaceholder(type, 'close')
   }
 }
 
 function filterAdvancedSearchOptions (type) {
   const inputFieldValue = document.getElementById(type).value.toLowerCase()
-  const list = document.getElementsByClassName(type).item(1)
+  const icon = document.getElementsByClassName(type).item(0)
+  const iconState = icon.getAttribute('data-state')
   if (inputFieldValue.length > 0) {
     const filteredSearchOptions = {
       ...advancedSearchOptions,
       [type]: advancedSearchOptions[type].filter((item) => item.includes(inputFieldValue))
     }
     showAdvancedSearchOptions(filteredSearchOptions)
-    if (list.classList.contains('d-none')) {
-      list.classList.remove('d-none')
-      list.classList.add('d-flex')
-      setPlaceholder(type, 'open')
+    if (iconState === 'hide') {
+      toggleAdvancedSearchOptions(type)
     }
   } else {
     setAdvancedSearchOptions(activeRecipes)
-    if (list.classList.contains('d-flex')) {
-      list.classList.remove('d-flex')
-      list.classList.add('d-none')
-      setPlaceholder(type, 'closed')
+    if (iconState === 'show') {
+      toggleAdvancedSearchOptions(type)
     }
   }
 }
