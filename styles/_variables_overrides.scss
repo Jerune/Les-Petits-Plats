@@ -17,3 +17,11 @@ $position-values: (
 $h1-font-size : 1.125rem;
 $h2-font-size : 0.875rem;
 $h3-font-size : 0.75rem;
+
+// Responsive breakpoints
+
+@mixin responsive($breakpoint) {
+    @media screen and (min-width: $breakpoint){
+        @content;
+    }
+}

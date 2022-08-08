@@ -10918,9 +10918,8 @@ textarea.form-control-lg {
   box-sizing: border-box;
 }
 
-body {
+html {
   font-family: "Lato", sans-serif;
-  margin: 0;
 }
 
 .logo {
@@ -10962,7 +10961,6 @@ ul {
 }
 
 .main {
-  margin-top: 105px;
   margin-bottom: 60px;
 }
 
@@ -11007,7 +11005,24 @@ ul {
   max-height: 97px;
 }
 .recipes .bi-clock {
-  min-width: 83px;
+  min-width: 87px;
+}
+
+.advanced_search_items {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 100%;
+  z-index: 2000;
+  background-color: white;
+}
+@media screen and (min-width: 992px) {
+  .advanced_search_items {
+    max-height: 62px;
+    flex-direction: row;
+    width: auto;
+    max-height: 200px;
+  }
 }
 
 .search_items_list {
@@ -11015,18 +11030,48 @@ ul {
   overflow-y: auto;
 }
 .search_items_list li {
-  width: 50%;
+  width: 100%;
   cursor: pointer;
 }
-
-.ingredients,
-.utensils {
-  max-width: 450px;
+@media screen and (min-width: 576px) {
+  .search_items_list li {
+    width: 50%;
+  }
+}
+@media screen and (min-width: 768px) {
+  .search_items_list li {
+    width: 33%;
+  }
+}
+@media screen and (min-width: 992px) {
+  .search_items_list li {
+    width: 50%;
+  }
+}
+@media screen and (min-width: 1200px) {
+  .search_items_list li {
+    width: 33%;
+  }
 }
 
+@media screen and (min-width: 992px) {
+  .ingredients,
+.utensils,
 .machines {
-  max-width: 225px;
+    max-width: 372px;
+  }
 }
-.machines li {
-  width: 100%;
+@media screen and (min-width: 1200px) {
+  .ingredients,
+.utensils,
+.machines {
+    max-width: 550px;
+  }
+}
+@media screen and (min-width: 1400px) {
+  .ingredients,
+.utensils,
+.machines {
+    max-width: 730px;
+  }
 }/*# sourceMappingURL=main.css.map */

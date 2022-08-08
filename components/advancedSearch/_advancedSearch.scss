@@ -1,21 +1,50 @@
+.advanced_search_items{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 100%;
+    z-index: 2000;
+    background-color: white;
+        @include responsive(992px){
+            max-height: 62px;
+            flex-direction: row;
+            width: auto;
+            max-height: 200px;
+        }
+}
+
 .search_items_list{
     max-height: 335px;
     overflow-y: auto;
     li{
-        width: 50%;
+        width: 100%;
         cursor: pointer;
+        @include responsive(576px){
+            width: 50%;
+        }
+        @include responsive(768px){
+            width: 33%;
+        }
+        @include responsive(992px){
+            width: 50%;
+        }
+        @include responsive(1200px){
+            width: 33%;
+        }
     }
 }
 
 .ingredients,
-.utensils{
-    max-width: 450px;
-}
-
+.utensils,
 .machines{
-    max-width: 225px;
-        li{
-            width: 100%;
+    @include responsive(992px){
+        max-width: 372px;
+    }
+    @include responsive(1200px){
+        max-width: 550px;
+    }
+    @include responsive(1400px){
+        max-width: 730px;
     }
 }
 

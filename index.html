@@ -19,58 +19,64 @@
         </header>
         
         <!-----------  Search -------------->
-        <div class="search container mt-3">
+        <div class="search container mt-3 w-100">
             
             <!--General Search-->
             <div class="search_general row">
-                <div class="column-12 d-flex align-items-center position-relative">
+                <div class="column-12 d-flex align-items-center position-relative w-100">
                     <input id="search_general_input" type="text" placeholder="Rechercher une recette" class="placeholder-opacity-25 w-100 p-4 border-0 bg-light rounded-2 fs-1 fw-normal pe text-black">
                     <i class="search_general_icon bi bi-search position-absolute end-30"></i>
                 </div>
             </div>
+        </div>
             
             <!--Search Tags-->
+        <div class="container w-100">
             <div id="tags" class="row">
                 <ul id="search_tags" class="search_tags d-flex flex-row"></ul>
             </div>
+        </div>
             
             <!--Specific Search-->
-            <div class="row mt-3 gx-4 text-white position-absolute" style="max-height: 70px; z-index: 2000 ;">
-                <!---Ingredients-->
-                <div class="col-auto">
-                    <div class="p-3 bg-primary rounded-2 fs-1">
-                        <div class="d-flex flex-row justify-content-between align-items-center">
-                            <input id="ingredients" class="option_select border-0 bg-primary text-white" type="text" placeholder="Ingredients" >
-                            <i class="ingredients bi bi-chevron-down fw-bold" data-state="show"></i>
+        <div class="container w-100">
+            <div class="row mt-3 gx-4">
+                <div class="advanced_search_items text-white">
+                    <!---Ingredients-->
+                    <div class="col-12 col-lg-auto pb-2 pb-lg-0 pe-lg-3">
+                        <div class="p-3 bg-primary rounded-2 fs-1">
+                            <div class="d-flex flex-row justify-content-between align-items-center">
+                                <input id="ingredients" class="option_select border-0 bg-primary text-white" type="text" placeholder="Ingredients" >
+                                <i class="ingredients bi bi-chevron-down fw-bold" data-state="show"></i>
+                            </div>
+                            <ul class="ingredients search_items_list d-none flex-wrap px-0 pt-3 fs-1"></ul>
                         </div>
-                        <ul class="ingredients search_items_list d-none flex-wrap px-0 pt-3 fs-1"></ul>
                     </div>
-                </div>
-                <!---Machines-->
-                <div class="col-auto">
-                    <div class="p-3 bg-success rounded-2 fs-1">
-                        <div class="d-flex flex-row justify-content-between align-items-center">
-                            <input id="machines" class="option_select border-0 bg-success text-white" type="text" placeholder="Appareils" >
-                            <i class="machines bi bi-chevron-down fw-bold" data-state="show"></i>
+                    <!---Machines-->
+                    <div class="col-12 col-lg-auto pb-2 pb-lg-0 pe-lg-3">
+                        <div class="p-3 bg-success rounded-2 fs-1">
+                            <div class="d-flex flex-row justify-content-between align-items-center">
+                                <input id="machines" class="option_select border-0 bg-success text-white" type="text" placeholder="Appareils" >
+                                <i class="machines bi bi-chevron-down fw-bold" data-state="show"></i>
+                            </div>
+                            <ul class="machines search_items_list d-none flex-wrap px-0 pt-3 fs-1"></ul>
                         </div>
-                        <ul class="machines search_items_list d-none flex-wrap px-0 pt-3 fs-1"></ul>
                     </div>
-                </div>
-                <!---Utensils-->
-                <div class="col-auto">
-                    <div class="p-3 bg-danger rounded-2 fs-1">
-                        <div class="d-flex flex-row justify-content-between align-items-center">
-                            <input id="utensils" class="option_select border-0 bg-danger text-white" type="text" placeholder="Ustensils" >
-                            <i class="utensils bi bi-chevron-down fw-bold" data-state="show"></i>
+                    <!---Utensils-->
+                    <div class="col-12 col-lg-auto">
+                        <div class="p-3 bg-danger rounded-2 fs-1">
+                            <div class="d-flex flex-row justify-content-between align-items-center">
+                                <input id="utensils" class="option_select border-0 bg-danger text-white" type="text" placeholder="Ustensils" >
+                                <i class="utensils bi bi-chevron-down fw-bold" data-state="show"></i>
+                            </div>
+                            <ul class="utensils search_items_list d-none flex-wrap px-0 pt-3 fs-1"></ul>
                         </div>
-                        <ul class="utensils search_items_list d-none flex-wrap px-0 pt-3 fs-1"></ul>
                     </div>
                 </div>
             </div>
         </div>
 
         <!-----------  Recipes -------------->
-        <main class="main container">
+        <main class="main container my-4">
             <div class="recipes row g-4"></div>
         </main>
 
