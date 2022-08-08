@@ -91,7 +91,6 @@ function removeTagsFromRecipesAndsetAdvancedSearchOptions (filteredRecipes) {
       ingredients: activeTags.ingredients.length > 0 ? recipe.ingredients.filter((ingr) => !activeTags.ingredients.some((value) => ingr.ingredient.includes(value))) : recipe.ingredients
     }
   })
-  console.log(recipesWithActiveTagsRemoved)
   setAdvancedSearchOptions(recipesWithActiveTagsRemoved)
 }
 
