@@ -11046,11 +11046,17 @@ ul {
 @media screen and (min-width: 992px) {
   .search_items_list li {
     width: 50%;
+    min-width: 180px;
   }
 }
 @media screen and (min-width: 1200px) {
   .search_items_list li {
     width: 33%;
+  }
+}
+@media screen and (min-width: 1400px) {
+  .search_items_list li {
+    min-width: 240px;
   }
 }
 
