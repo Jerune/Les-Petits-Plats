@@ -15,7 +15,6 @@ const activeTags = {
 
 // Manage general search input users
 function handleGeneralSearch (recipesArray) {
-  console.log('testing')
   const searchGeneralInput = document.getElementById('search_general_input').value.toLowerCase()
   if (searchGeneralInput.length > 2) {
     const newRecipes = []
