@@ -15,13 +15,36 @@ const activeTags = {
 
 // Manage general search input users
 function handleGeneralSearch (recipesArray) {
+  console.log('testing')
   const searchGeneralInput = document.getElementById('search_general_input').value.toLowerCase()
   if (searchGeneralInput.length > 2) {
-    let newRecipes = []
+    const newRecipes = []
     if (filteredRecipes.length > 0) {
-      newRecipes = filteredRecipes.filter((recipe) => recipe.name.toLowerCase().includes(searchGeneralInput) || recipe.description.includes(searchGeneralInput) || recipe.ingredients.some((ingredient) => ingredient.ingredient.toLowerCase().includes(searchGeneralInput)))
+      for (const recipe of filteredRecipes) {
+        const ingredientsList = []
+        for (const ingredient of recipe.ingredients) {
+          if (ingredient.ingredient.toLowerCase().includes(searchGeneralInput.toLowerCase())) {
+            console.log(ingredient.ingredient.toLowerCase(), searchGeneralInput.toLowerCase())
+            ingredientsList.push(ingredient.ingredient.toLowerCase())
+          }
+        }
+        if (recipe.name.toLowerCase().includes(searchGeneralInput.toLowerCase()) || recipe.description.includes(searchGeneralInput.toLowerCase()) || ingredientsList.length > 0) {
+          newRecipes.push(recipe)
+        }
+      }
     } else if (filteredRecipes.length === 0) {
-      newRecipes = recipesArray.filter((recipe) => recipe.name.toLowerCase().includes(searchGeneralInput) || recipe.description.includes(searchGeneralInput) || recipe.ingredients.some((ingredient) => ingredient.ingredient.toLowerCase().includes(searchGeneralInput)))
+      for (const recipe of recipesArray) {
+        const ingredientsList = []
+        for (const ingredient of recipe.ingredients) {
+          if (ingredient.ingredient.toLowerCase().includes(searchGeneralInput.toLowerCase())) {
+            console.log(ingredient.ingredient.toLowerCase(), searchGeneralInput.toLowerCase())
+            ingredientsList.push(ingredient.ingredient.toLowerCase())
+          }
+        }
+        if (recipe.name.toLowerCase().includes(searchGeneralInput.toLowerCase()) || recipe.description.includes(searchGeneralInput.toLowerCase()) || ingredientsList.length > 0) {
+          newRecipes.push(recipe)
+        }
+      }
     }
     activeRecipes = newRecipes
     showRecipeCards(activeRecipes)
