@@ -2,6 +2,12 @@
 // DOM
 const recipeCardsElement = document.querySelector('.recipes')
 
+/**
+ * Creates recipe cards from recipe array and adds those to the page
+ * @function showRecipeCards
+ * @param {Array.<Object>} recipesData Array of active recipes
+ * @returns {HTMLCollection} list of cards with recipe data
+ */
 function showRecipeCards (recipesData) {
   let recipeCards = ''
   if (recipesData.length > 0) {

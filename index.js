@@ -41,13 +41,21 @@ ingredientsIcon.addEventListener('click', () => toggleAdvancedSearchOptions('ing
 machinesIcon.addEventListener('click', () => toggleAdvancedSearchOptions('machines'))
 utensilsIcon.addEventListener('click', () => toggleAdvancedSearchOptions('utensils'))
 
-function initRecipes (recipesArray) {
-  showRecipeCards(recipesArray)
+/**
+ * Initiates all recipes to be shown when page is loaded
+ * @function initRecipes
+ */
+function initRecipes () {
+  showRecipeCards(recipes)
 }
 
-function initSearchOptions (advancedSearchOptions) {
-  setAdvancedSearchOptions(advancedSearchOptions)
+/**
+ * Initiates all possible search options to be shown when page is loaded
+ * @function initSearchOptions
+ */
+function initSearchOptions () {
+  setAdvancedSearchOptions(recipes)
 }
 
-initRecipes(recipes)
-initSearchOptions(recipes)
+initRecipes()
+initSearchOptions()

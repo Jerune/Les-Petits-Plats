@@ -6,17 +6,22 @@ import { toggleAdvancedSearchOptions } from './advancedSearch.js'
 let tags = []
 const tagsSection = document.getElementById('tags')
 
-// ---------------------------- TAGS FUNCTIONS ---------------
-
-function setTags (type, element) {
+/**
+ * Adds a tag to the tags object whenever user clicks on advanced search option in menu
+ * @function setTags
+ * @param {string} type one of the three types of advanced search options menu's (ingredients, machines or utensils)
+ * @param {HTMLElement} option clicked advanced search option by the user
+ * @returns {Array} list of chosen tags by user
+ */
+function setTags (type, option) {
   let activeTags = []
   if (tags.length > 0) {
-    activeTags = tags.filter((tag) => tag.title === element.innerText.toLowerCase())
+    activeTags = tags.filter((tag) => tag.title === option.innerText.toLowerCase())
   }
   if (activeTags.length === 0) {
     const bgColor = type === 'ingredients' ? 'bg-primary' : type === 'machines' ? 'bg-success' : type === 'utensils' ? 'bg-danger' : ''
     const newTag = {
-      title: element.innerText.toLowerCase(),
+      title: option.innerText.toLowerCase(),
       bg: bgColor,
       tagType: type
     }
@@ -27,6 +32,12 @@ function setTags (type, element) {
   }
 }
 
+/**
+ * Creates list items from tags and shows them on the page
+ * @function showTags
+ * @param {Array} tagsArray list of active tags
+ * @returns {HTMLCollection} list of tags (li) on page
+ */
 function showTags (tagsArray) {
   const tagsList = document.getElementById('search_tags')
   let tagsItems = ''
@@ -46,8 +57,14 @@ function showTags (tagsArray) {
   tagsList.innerHTML = tagsItems
 }
 
-function deleteTags (element) {
-  const tagTitle = element.previousElementSibling.innerText.toLowerCase()
+/**
+ * Removes a tag from the taglist and updates recipes on page
+ * @function deleteTags
+ * @param {HTMLElement} option clicked advanced search option by the user
+ * @returns {Array} list of remaining tags to be used for updating recipes and tags
+ */
+function deleteTags (option) {
+  const tagTitle = option.previousElementSibling.innerText.toLowerCase()
   const newTagsArray = tags.filter((tag) => tag.title !== tagTitle)
   tags = newTagsArray
   updateGeneralSearch(tags)

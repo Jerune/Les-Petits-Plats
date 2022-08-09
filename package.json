@@ -6,12 +6,15 @@
     "sass": "^1.54.0"
   },
   "devDependencies": {
+    "docdash": "^1.2.0",
     "eslint": "^8.21.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-config-standard": "^17.0.0",
     "eslint-plugin-import": "^2.26.0",
     "eslint-plugin-n": "^15.2.4",
     "eslint-plugin-prettier": "^4.2.1",
-    "eslint-plugin-promise": "^6.0.0"
+    "eslint-plugin-promise": "^6.0.0",
+    "jsdoc": "^3.6.11",
+    "jsdoc-to-markdown": "^7.1.1"
   }
 }

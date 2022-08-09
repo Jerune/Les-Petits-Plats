@@ -3,9 +3,12 @@
 let activeRecipes = []
 let advancedSearchOptions = {}
 
-// --------------------- ADVANCED SEARCH OPTIONS FUNCTIONS ---------------
-
-// Set available advanced search options based on current recipes
+/**
+ * Builds up the advancedSearchOptions object from the active recipes that can be used to show advanced search options
+ * @function setAdvancedSearchOptions
+ * @param {Array.<Object>} recipesArray Array of recipe objects that are currently active on the page
+ * @return {Object} All filtered advanced search options to showAdvancedSearchOptions function
+ */
 function setAdvancedSearchOptions (recipesArray) {
   activeRecipes = recipesArray
   advancedSearchOptions = {
@@ -40,6 +43,12 @@ function setAdvancedSearchOptions (recipesArray) {
   showAdvancedSearchOptions(filteredSearchOptions)
 }
 
+/**
+ * Creates list items (li) from every active advanced search option that is currently active
+ * @function showAdvancedSearchOptions
+ * @param {Object} advancedSearchOptions All active advanced search options from active recipes
+ * @returns {HTMLCollection} Adds advanced search items as list items (li) to every advanced search menu (ul)
+ */
 function showAdvancedSearchOptions (advancedSearchOptions) {
   const types = ['ingredients', 'machines', 'utensils']
   types.forEach((type) => {
@@ -48,6 +57,7 @@ function showAdvancedSearchOptions (advancedSearchOptions) {
     advancedSearchOptions[type].forEach((element) => {
       listItems += `<li onclick="setTags('${type}', this)" class="py-1 fw-normal">${element.charAt(0).toUpperCase() + element.slice(1)}</li>`
     })
+    // Removes or adds padding to advanced search lists in case there are items or not
     if (listItems.length > 0) {
       list.innerHTML = listItems
       if (!list.classList.contains('pt-3')) {
@@ -61,6 +71,13 @@ function showAdvancedSearchOptions (advancedSearchOptions) {
     }
   })
 }
+
+/**
+ * Changes the placeholder of one of the advanced search menu's to closed or open value
+ * @param {string} type one of the three types of advanced search options menu's (ingredients, machines or utensils)
+ * @param {string} action open or close action for placeholder value
+ * @returns {string} Placeholder attribute value and opacity class
+ */
 function setPlaceholder (type, action) {
   const inputField = document.getElementById(type)
   const placeholderValueOpen = type === 'ingredients' ? 'Rechercher un ingédient' : type === 'machines' ? 'Rechercher un appareil' : type === 'utensils' ? 'Rechercher un ustensil' : ''
@@ -73,7 +90,12 @@ function setPlaceholder (type, action) {
     inputField.classList.add('placeholder-opacity-50')
   }
 }
-
+/**
+ * Toggles between making of one (or more) of the advanced search menus visible or invisible based on the 'data-state' of the toggle icon.
+ * @function toggleAdvancedSearchOptions
+ * @param {string} type one of the three types of advanced search options menu's (ingredients, machines or utensils)
+ * @returns changes class and attribute values of an advanced search menu to show or hide its content
+ */
 function toggleAdvancedSearchOptions (type) {
   const types = ['ingredients', 'machines', 'utensils']
   const otherTypes = types.filter((lst) => lst !== type)
@@ -91,6 +113,7 @@ function toggleAdvancedSearchOptions (type) {
     activeList.classList.remove('d-none')
     activeList.classList.add('d-flex')
     setPlaceholder(type, 'open')
+    // Closes other two menu's if they are open when opening another menu
     if (otherIcon1.getAttribute('data-state') === 'show') {
       otherIcon1.classList.remove('bi-chevron-up')
       otherIcon1.classList.add('bi-chevron-down')
@@ -116,6 +139,12 @@ function toggleAdvancedSearchOptions (type) {
   }
 }
 
+/**
+ * Filters advanced search options in one of the advanced search option menu's based on users input
+ * @function filterAdvancedSearchOptions
+ * @param {string} type one of the three types of advanced search options menu's (ingredients, machines or utensils)
+ * @returns {Object} filtered search options
+ */
 function filterAdvancedSearchOptions (type) {
   const inputFieldValue = document.getElementById(type).value.toLowerCase()
   const icon = document.getElementsByClassName(type).item(0)
@@ -126,9 +155,11 @@ function filterAdvancedSearchOptions (type) {
       [type]: advancedSearchOptions[type].filter((item) => item.includes(inputFieldValue))
     }
     showAdvancedSearchOptions(filteredSearchOptions)
+    // Shows the advanced search options when user starts typing
     if (iconState === 'hide') {
       toggleAdvancedSearchOptions(type)
     }
+    // Hides the advanced search options when no content is present
   } else {
     setAdvancedSearchOptions(activeRecipes)
     if (iconState === 'show') {
