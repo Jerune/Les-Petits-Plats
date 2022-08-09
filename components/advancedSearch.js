@@ -50,18 +50,13 @@ function showAdvancedSearchOptions (advancedSearchOptions) {
     })
     if (listItems.length > 0) {
       list.innerHTML = listItems
-      !list.classList.contains('pt-3') && list.classList.add('pt-3')
+      if (!list.classList.contains('pt-3')) {
+        list.classList.add('pt-3')
+      }
     } else {
       list.innerHTML = ''
-      list.classList.contains('pt-3') && list.classList.remove('pt-3')
-      const listIcon = document.getElementsByClassName(type).item(0)
-      if (listIcon.getAttribute('data-state') === 'show') {
-        listIcon.classList.remove('bi-chevron-up')
-        listIcon.classList.add('bi-chevron-down')
-        listIcon.setAttribute('data-state', 'hide')
-        list.classList.remove('d-flex')
-        list.classList.add('d-none')
-        setPlaceholder(type, 'close')
+      if (list.classList.contains('pt-3')) {
+        list.classList.remove('pt-3')
       }
     }
   })

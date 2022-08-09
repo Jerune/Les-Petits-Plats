@@ -9,7 +9,7 @@ let activeRecipes = recipes
 let filteredRecipes = []
 const activeTags = {
   ingredients: [],
-  machine: [],
+  machines: [],
   utensils: []
 }
 
@@ -40,19 +40,19 @@ function handleGeneralSearch (recipesArray) {
 
 function updateGeneralSearch (tagsArray) {
   const ingredients = []
-  const machine = []
+  const machines = []
   const utensils = []
   tagsArray.forEach((tag) => {
     tag.tagType === 'ingredients'
       ? ingredients.push(tag.title)
       : tag.tagType === 'machines'
-        ? machine.push(tag.title)
+        ? machines.push(tag.title)
         : tag.tagType === 'utensils'
           ? utensils.push(tag.title)
           : console.log('an error has occured')
   })
   activeTags.ingredients = ingredients
-  activeTags.machine = machine
+  activeTags.machines = machines
   activeTags.utensils = utensils
   if (tagsArray.length > 0) {
     const recipesInLowerCase = activeRecipes.map((recipe) => {
@@ -72,7 +72,7 @@ function updateGeneralSearch (tagsArray) {
         }
       )
     })
-    filteredRecipes = recipesInLowerCase.filter((recipe) => recipe.appliance.toLowerCase().includes(machine) && utensils.every((value) => recipe.ustensils.includes(value)) && ingredients.every((value) => recipe.ingredients.some((ingredient) => ingredient.ingredient.includes(value))))
+    filteredRecipes = recipesInLowerCase.filter((recipe) => recipe.appliance.toLowerCase().includes(machines) && utensils.every((value) => recipe.ustensils.includes(value)) && ingredients.every((value) => recipe.ingredients.some((ingredient) => ingredient.ingredient.includes(value))))
     showRecipeCards(filteredRecipes)
     removeTagsFromRecipesAndsetAdvancedSearchOptions(filteredRecipes)
   } else {
@@ -87,7 +87,7 @@ function removeTagsFromRecipesAndsetAdvancedSearchOptions (filteredRecipes) {
     return {
       ...recipe,
       ustensils: activeTags.utensils.length > 0 ? recipe.ustensils.filter((ustensil) => !activeTags.utensils.some((value) => ustensil.includes(value))) : recipe.ustensils,
-      appliance: activeTags.machine.length > 0 ? '' : recipe.appliance,
+      appliance: activeTags.machines.length > 0 ? '' : recipe.appliance,
       ingredients: activeTags.ingredients.length > 0 ? recipe.ingredients.filter((ingr) => !activeTags.ingredients.some((value) => ingr.ingredient.includes(value))) : recipe.ingredients
     }
   })

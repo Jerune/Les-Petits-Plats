@@ -1,6 +1,7 @@
 // @ts-nocheck
 // Imports
 import { updateGeneralSearch } from './searchBar.js'
+import { toggleAdvancedSearchOptions } from './advancedSearch.js'
 
 let tags = []
 const tagsSection = document.getElementById('tags')
@@ -22,6 +23,7 @@ function setTags (type, element) {
     tags.push(newTag)
     updateGeneralSearch(tags)
     showTags(tags)
+    toggleAdvancedSearchOptions(type)
   }
 }
 
