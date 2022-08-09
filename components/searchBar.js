@@ -14,21 +14,24 @@ const activeTags = {
 }
 
 // Manage general search input users
-function handleGeneralSearch (recipesArray) {
+function handleGeneralSearch () {
   const searchGeneralInput = document.getElementById('search_general_input').value.toLowerCase()
   if (searchGeneralInput.length > 2) {
     let newRecipes = []
     if (filteredRecipes.length > 0) {
+      activeRecipes = recipes.filter((recipe) => recipe.name.toLowerCase().includes(searchGeneralInput) || recipe.description.includes(searchGeneralInput) || recipe.ingredients.some((ingredient) => ingredient.ingredient.toLowerCase().includes(searchGeneralInput)))
       newRecipes = filteredRecipes.filter((recipe) => recipe.name.toLowerCase().includes(searchGeneralInput) || recipe.description.includes(searchGeneralInput) || recipe.ingredients.some((ingredient) => ingredient.ingredient.toLowerCase().includes(searchGeneralInput)))
     } else if (filteredRecipes.length === 0) {
-      newRecipes = recipesArray.filter((recipe) => recipe.name.toLowerCase().includes(searchGeneralInput) || recipe.description.includes(searchGeneralInput) || recipe.ingredients.some((ingredient) => ingredient.ingredient.toLowerCase().includes(searchGeneralInput)))
+      newRecipes = recipes.filter((recipe) => recipe.name.toLowerCase().includes(searchGeneralInput) || recipe.description.includes(searchGeneralInput) || recipe.ingredients.some((ingredient) => ingredient.ingredient.toLowerCase().includes(searchGeneralInput)))
+      activeRecipes = newRecipes
     }
-    activeRecipes = newRecipes
-    showRecipeCards(activeRecipes)
-    removeTagsFromRecipesAndsetAdvancedSearchOptions(activeRecipes)
+    showRecipeCards(newRecipes)
+    removeTagsFromRecipesAndsetAdvancedSearchOptions(newRecipes)
   } else {
     activeRecipes = recipes
     if (filteredRecipes.length > 0) {
+      const recipesInLowerCase = putRecipesInLowerCase(activeRecipes)
+      filteredRecipes = recipesInLowerCase.filter((recipe) => recipe.appliance.toLowerCase().includes(activeTags.machines) && activeTags.utensils.every((value) => recipe.ustensils.includes(value)) && activeTags.ingredients.every((value) => recipe.ingredients.some((ingredient) => ingredient.ingredient.includes(value))))
       showRecipeCards(filteredRecipes)
       removeTagsFromRecipesAndsetAdvancedSearchOptions(filteredRecipes)
     } else {
@@ -55,23 +58,7 @@ function updateGeneralSearch (tagsArray) {
   activeTags.machines = machines
   activeTags.utensils = utensils
   if (tagsArray.length > 0) {
-    const recipesInLowerCase = activeRecipes.map((recipe) => {
-      return (
-        {
-          ...recipe,
-          ingredients: recipe.ingredients.map((ingr) => {
-            return {
-              ...ingr,
-              ingredient: ingr.ingredient.toLowerCase()
-            }
-          }),
-          ustensils: recipe.ustensils.map((ustensil) => {
-            return ustensil.toLowerCase()
-          }),
-          appliance: recipe.appliance.toLowerCase()
-        }
-      )
-    })
+    const recipesInLowerCase = putRecipesInLowerCase(activeRecipes)
     filteredRecipes = recipesInLowerCase.filter((recipe) => recipe.appliance.toLowerCase().includes(machines) && utensils.every((value) => recipe.ustensils.includes(value)) && ingredients.every((value) => recipe.ingredients.some((ingredient) => ingredient.ingredient.includes(value))))
     showRecipeCards(filteredRecipes)
     removeTagsFromRecipesAndsetAdvancedSearchOptions(filteredRecipes)
@@ -80,6 +67,27 @@ function updateGeneralSearch (tagsArray) {
     showRecipeCards(activeRecipes)
     setAdvancedSearchOptions(activeRecipes)
   }
+}
+
+function putRecipesInLowerCase (recipesArray) {
+  const recipesInLowerCase = recipesArray.map((recipe) => {
+    return (
+      {
+        ...recipe,
+        ingredients: recipe.ingredients.map((ingr) => {
+          return {
+            ...ingr,
+            ingredient: ingr.ingredient.toLowerCase()
+          }
+        }),
+        ustensils: recipe.ustensils.map((ustensil) => {
+          return ustensil.toLowerCase()
+        }),
+        appliance: recipe.appliance.toLowerCase()
+      }
+    )
+  })
+  return recipesInLowerCase
 }
 
 function removeTagsFromRecipesAndsetAdvancedSearchOptions (filteredRecipes) {

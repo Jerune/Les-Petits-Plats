@@ -21,7 +21,7 @@ const utensilsIcon = document.getElementsByClassName('utensils').item(0)
 
 // -----------------   Event Listeners ----------------------------
 // General Search input event filtering
-searchGeneralInput.addEventListener('input', () => handleGeneralSearch(recipes))
+searchGeneralInput.addEventListener('input', () => handleGeneralSearch())
 
 // Advanced Search input event filtering
 ingredientsInput.addEventListener('input', () => filterAdvancedSearchOptions('ingredients'))
