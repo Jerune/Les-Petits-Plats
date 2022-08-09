@@ -24,7 +24,6 @@ function handleGeneralSearch (recipesArray) {
       newRecipes = recipesArray.filter((recipe) => recipe.name.toLowerCase().includes(searchGeneralInput) || recipe.description.includes(searchGeneralInput) || recipe.ingredients.some((ingredient) => ingredient.ingredient.toLowerCase().includes(searchGeneralInput)))
     }
     activeRecipes = newRecipes
-    console.log(activeRecipes)
     showRecipeCards(activeRecipes)
     removeTagsFromRecipesAndsetAdvancedSearchOptions(activeRecipes)
   } else {

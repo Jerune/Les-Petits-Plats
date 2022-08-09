@@ -54,7 +54,15 @@ function showAdvancedSearchOptions (advancedSearchOptions) {
     } else {
       list.innerHTML = ''
       list.classList.contains('pt-3') && list.classList.remove('pt-3')
-      toggleAdvancedSearchOptions(type)
+      const listIcon = document.getElementsByClassName(type).item(0)
+      if (listIcon.getAttribute('data-state') === 'show') {
+        listIcon.classList.remove('bi-chevron-up')
+        listIcon.classList.add('bi-chevron-down')
+        listIcon.setAttribute('data-state', 'hide')
+        list.classList.remove('d-flex')
+        list.classList.add('d-none')
+        setPlaceholder(type, 'close')
+      }
     }
   })
 }
