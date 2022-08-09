@@ -38,3 +38,11 @@ ul{
 .main{
     margin-bottom: 60px;
 }
+
+.placeholder-opacity-25::placeholder{
+        opacity: 0.25;
+}
+
+.placeholder-opacity-50::placeholder{
+        opacity: 0.5;
+}

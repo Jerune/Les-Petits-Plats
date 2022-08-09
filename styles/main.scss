@@ -2,10 +2,6 @@
 @import "./variables_overrides";
 @import "../node_modules/bootstrap/scss/bootstrap.scss";
 
-// General
+// Custom styles
 @import "./general.scss";
-
-// Custom Component styles
-@import "../components/searchbar/searchbar.scss";
-@import "../components/recipeCards/recipeCards.scss";
-@import "../components/advancedSearch/advancedSearch.scss";
+@import "../components/component_specific.scss";

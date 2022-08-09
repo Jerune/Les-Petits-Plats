@@ -1,6 +1,6 @@
 // @ts-nocheck
 // Imports
-import { updateGeneralSearch } from '../searchbar/searchBar.js'
+import { updateGeneralSearch } from './searchBar.js'
 
 let tags = []
 const tagsSection = document.getElementById('tags')

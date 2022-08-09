@@ -1,8 +1,8 @@
 // @ts-nocheck
 // Imports
-import { recipes } from '../../data/recipes.js'
-import { showRecipeCards } from '../recipeCards/recipeCards.js'
-import { setAdvancedSearchOptions } from '../advancedSearch/advancedSearch.js'
+import { recipes } from '../data/recipes.js'
+import { showRecipeCards } from './recipeCards.js'
+import { setAdvancedSearchOptions } from './advancedSearch.js'
 
 // Variables
 let activeRecipes = recipes
