@@ -10988,6 +10988,11 @@ ul {
   opacity: 0.5;
 }
 
+#search_general_input {
+  padding: 1.5rem;
+  padding-right: 3rem;
+}
+
 .search_general_icon {
   font-size: 25px;
 }
